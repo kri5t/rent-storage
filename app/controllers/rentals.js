@@ -12,10 +12,10 @@ var mongoose = require('mongoose'),
  * Find rental by id
  */
 exports.rental = function(req, res, next, id) {
-    Rental.load(id, function(err, article) {
+    Rental.load(id, function(err, rental) {
         if (err) return next(err);
-        if (!article) return next(new Error('Failed to load article ' + id));
-        req.article = article;
+        if (!rental) return next(new Error('Failed to load rental ' + id));
+        req.rental = rental;
         next();
     });
 };

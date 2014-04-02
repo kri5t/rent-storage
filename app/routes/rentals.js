@@ -23,7 +23,7 @@ module.exports = function(app) {
     app.put('/rentals/:rentalId', authorization.requiresLogin, hasAuthorization, rentals.update);
     app.del('/rentals/:rentalId', authorization.requiresLogin, hasAuthorization, rentals.destroy);
 
-    // Finish with setting up the articleId param
-    app.param('articleId', rentals.rental);
+    // Finish with setting up the rentalId param
+    app.param('rentalId', rentals.rental);
 
 };

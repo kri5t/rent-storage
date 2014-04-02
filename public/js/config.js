@@ -24,10 +24,6 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                 url: '/articles/:articleId',
                 templateUrl: 'views/articles/view.html'
             })
-            .state('home', {
-                url: '/',
-                templateUrl: 'views/index.html'
-            })
             .state('all rentals', {
                 url: '/rentals',
                 templateUrl: 'views/rentals/list.html'
@@ -44,10 +40,14 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                 url: '/rentals/:rentalId',
                 templateUrl: 'views/rentals/view.html'
             })
-			.state('user', {
-				url: '/user',
-				templateUrl: 'views/user/view.html'
-			});
+            .state('user', {
+                url: '/user',
+                templateUrl: 'views/user/view.html'
+            })
+            .state('home', {
+                url: '/',
+                templateUrl: 'views/index.html'
+            });
     }
 ]);
 

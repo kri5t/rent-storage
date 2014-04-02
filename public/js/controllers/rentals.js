@@ -50,8 +50,6 @@ angular.module('mean.rentals').controller('RentalsController', ['$scope', '$stat
         });
     };
 
-
-
     $scope.findOne = function() {
         Rentals.get({
             rentalId: $stateParams.rentalId
