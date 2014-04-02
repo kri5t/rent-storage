@@ -39,7 +39,11 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             .state('all rentals', {
                 url: '/rentals',
                 templateUrl: 'views/rentals/list.html'
-            });
+            })
+			.state('user', {
+				url: '/user',
+				templateUrl: 'views/user/view.html'
+			});;
     }
 ]);
 
