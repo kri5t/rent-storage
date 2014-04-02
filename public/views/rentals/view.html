@@ -1,6 +1,7 @@
 <section data-ng-controller="RentalsController" data-ng-init="findOne()">
-    <span>{{rental.user.name}}</span>
-    <h2>{{rental.title}}</h2>
+    <span>Bruger: {{rental.user.name}}</span>
+    <h2>Titel: {{rental.title}}</h2>
+    <h2> Pris: {{rental.price}}</h2>
     <div data-ng-show="global.user._id == rental.user._id">
         <a class="btn" href="/#!/rentals/{{rental._id}}/edit">
             <i class="glyphicon glyphicon-edit"></i>
