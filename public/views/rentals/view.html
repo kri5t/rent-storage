@@ -1,0 +1,6 @@
+<section data-ng-controller="RentalsController" data-ng-init="findOne()">
+    <span>{{rental.user.name}}</span>
+    <h2>{{rental.title}}</h2>
+    <div data-ng-show="global.user._id == rental.user._id">
+    </div>
+</section>

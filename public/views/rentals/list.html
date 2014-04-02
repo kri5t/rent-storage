@@ -1,0 +1,10 @@
+<section data-ng-controller="RentalsController" data-ng-init="find()">
+    <ul class="rentals unstyled">
+        <li data-ng-repeat="rental in rentals">
+            <span>{{rental.user.name}}</span>
+            <h2><a data-ng-href="#!/rental/{{rental._id}}">{{rental.title}}</a></h2>
+            <div>{{rental.price}}</div>
+        </li>
+    </ul>
+    <h1 data-ng-hide="!rentals || rentals.length">No rentals yet. <br> Why don't you <a href="/#!/rentals/create">Create One</a>?</h1>
+</section>

@@ -11,6 +11,11 @@ var mongoose = require('mongoose'),
  * Rental Schema
  */
 var RentalSchema = new Schema({
+    title: {
+        type: String,
+        default: '',
+        trim: true
+    },
     user: {
         type: Schema.ObjectId,
         ref: 'User'
