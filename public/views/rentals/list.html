@@ -2,7 +2,7 @@
     <ul class="rentals unstyled">
         <li data-ng-repeat="rental in rentals">
             <span>{{rental.user.name}}</span>
-            <h2><a data-ng-href="#!/rental/{{rental._id}}">{{rental.title}}</a></h2>
+            <h2><a data-ng-href="#!/rentals/{{rental._id}}">{{rental.title}}</a></h2>
             <div>{{rental.price}}</div>
         </li>
     </ul>
