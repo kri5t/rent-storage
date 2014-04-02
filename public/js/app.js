@@ -5,3 +5,4 @@ angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.router', 
 angular.module('mean.system', []);
 angular.module('mean.articles', []);
 angular.module('mean.rentals', []);
+angular.module('mean.user', []);
