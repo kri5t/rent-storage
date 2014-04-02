@@ -9,7 +9,7 @@ var authorization = require('./middlewares/authorization');
 
 // Rental authorization helpers
 var hasAuthorization = function(req, res, next) {
-    if (req.article.user.id !== req.user.id) {
+    if (req.rental.user.id !== req.user.id) {
         return res.send(401, 'User is not authorized');
     }
     next();

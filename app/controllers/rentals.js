@@ -4,8 +4,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Rental = mongoose.model('Rental');
-    //_ = require('lodash');
+    Rental = mongoose.model('Rental'),
+    _ = require('lodash');
 
 
 /**

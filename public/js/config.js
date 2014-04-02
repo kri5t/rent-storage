@@ -28,22 +28,26 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                 url: '/',
                 templateUrl: 'views/index.html'
             })
-            .state('rental by id', {
-                url: '/rentals/:rentalId',
-                templateUrl: 'views/rentals/view.html'
+            .state('all rentals', {
+                url: '/rentals',
+                templateUrl: 'views/rentals/list.html'
             })
             .state('create rental', {
                 url: '/rentals/create',
                 templateUrl: 'views/rentals/create.html'
             })
-            .state('all rentals', {
-                url: '/rentals',
-                templateUrl: 'views/rentals/list.html'
+            .state('edit rental', {
+                url: '/rentals/:rentalId/edit',
+                templateUrl: 'views/rentals/edit.html'
+            })
+            .state('rental by id', {
+                url: '/rentals/:rentalId',
+                templateUrl: 'views/rentals/view.html'
             })
 			.state('user', {
 				url: '/user',
 				templateUrl: 'views/user/view.html'
-			});;
+			});
     }
 ]);
 
