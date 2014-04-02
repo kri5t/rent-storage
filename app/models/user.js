@@ -20,6 +20,7 @@ var UserSchema = new Schema({
         type: String,
         unique: true
     },
+	rent: [{type: Schema.Types.ObjectId, ref: 'Rent'}],
     hashed_password: String,
     provider: String,
     salt: String,
