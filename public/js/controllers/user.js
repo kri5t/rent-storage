@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('mean.user').controller('UserController', [$scope, 'Global', function(){
+angular.module('mean.user').controller('UserController', ['$scope',  'User', 'Global', function($scope, User, Global){
 	$scope.findOne = function() {
-		console.log($scope.global.userId);
-		users.get({
+		$scope.global = Global;
+		console.log($scope.global.user._id);
+		User.get({
 			userId: $scope.global.userId
 		}, function(user) {
 			$scope.user = user;
