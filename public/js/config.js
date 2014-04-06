@@ -47,7 +47,11 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             .state('home', {
                 url: '/',
                 templateUrl: 'views/index.html'
-            });
+            })
+			.state('create booking', {
+				url: 'booking/create',
+				templateUrl: 'views/bookings/create.html'
+			});
     }
 ]);
 
