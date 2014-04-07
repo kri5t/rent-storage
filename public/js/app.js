@@ -6,4 +6,4 @@ angular.module('mean.system', []);
 angular.module('mean.articles', []);
 angular.module('mean.rentals', []);
 angular.module('mean.user', []);
-angular.module('mean.booking', []);
+angular.module('mean.booking', ['ui.bootstrap']);

@@ -1,3 +1,35 @@
 <legend>
-HEJ
+    BOOKING
 </legend>
+<section>
+    <div class="row" data-ng-controller="BookingsController">
+        <div class="col-md-6">
+            <form role="form" data-ng-submit="create()">
+                <div  data-ng-controller="DatetimeController">
+                    <p class="input-group">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}" data-ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                        <!--<input type="text" class="form-control" placeholder="in"/>-->
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                    </p>
+                </div>
+                <div  data-ng-controller="DatetimeController">
+                    <p class="input-group">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}" data-ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                        <!--<input type="text" class="form-control" placeholder="out"/>-->
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                    </p>
+                    <button class="btn btn-default btn-primary">
+                        Send
+                    </button>
+                    <button class="btn btn-default" ng-click="go('/home')">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

@@ -44,14 +44,14 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                 url: '/user',
                 templateUrl: 'views/user/view.html'
             })
+			.state('create booking', {
+				url: '/booking/create/:rentalId',
+				templateUrl: 'views/bookings/create.html'
+			})
             .state('home', {
                 url: '/',
                 templateUrl: 'views/index.html'
-            })
-			.state('create booking', {
-				url: 'booking/create',
-				templateUrl: 'views/bookings/create.html'
-			});
+            });
     }
 ]);
 
