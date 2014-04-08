@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.articles').directive('googleplace', function() {
+angular.module('mean.googleplace').directive('googleplace', function(gMaps, gPlaces) {
     return {
         require: 'ngModel',
         link: function(scope, element, attrs, model) {
@@ -8,9 +8,9 @@ angular.module('mean.articles').directive('googleplace', function() {
                 types: [],
                 componentRestrictions: {}
             };
-            scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
+            scope.gPlace = new gPlaces.Autocomplete(element[0], options);
 
-            google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
+            gMaps.event.addListener(scope.gPlace, 'place_changed', function() {
                 scope.$apply(function() {
                     model.$setViewValue(element.val());
                 });
