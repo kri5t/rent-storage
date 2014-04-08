@@ -9,7 +9,7 @@ angular.module('mean.googleplace').directive('googleplace', function(gPlaces,gMa
                 componentRestrictions: {}
             };
             scope.gPlace = new gPlaces.Autocomplete(element[0], options);
-            console.log('hej');
+
             gMaps.event.addListener(scope.gPlace, 'place_changed', function() {
                 scope.$apply(function() {
                     model.$setViewValue(element.val());
