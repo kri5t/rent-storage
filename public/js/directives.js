@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.googleplace').directive('googleplace', function(gMaps, gPlaces) {
+angular.module('mean.googleplace').directive('googleplace', function(gPlaces,gMaps) {
     return {
         require: 'ngModel',
         link: function(scope, element, attrs, model) {
