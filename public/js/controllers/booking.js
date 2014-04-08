@@ -57,4 +57,3 @@ angular.module('mean.booking').controller('BookingsController', ['$scope', '$loc
 		$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'shortDate'];
 		$scope.format = $scope.formats[0];
 	}]);
-;
