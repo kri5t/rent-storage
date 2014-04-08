@@ -6,9 +6,6 @@ angular.module('mean.booking')
 		$location.path( path );
 	};
 	$scope.create = function() {
-		console.log($scope);
-		console.log($location);
-		console.log(Bookings);
 		var booking = new Bookings({
 			to: this.dt,
 			from: this.dt
