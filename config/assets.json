@@ -7,6 +7,8 @@
 	},
 	"js": {
 		"public/build/js/dist.min.js": [
+            "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false",
+            "https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js",
 			"public/lib/angular/angular.js",
 			"public/lib/angular-cookies/angular-cookies.js",
 			"public/lib/angular-resource/angular-resource.js",
