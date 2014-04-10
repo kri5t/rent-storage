@@ -6,9 +6,11 @@ var mongoose = require('mongoose'),
 var BookingSchema = new Schema({
 	owner: {type: Schema.Types.ObjectId, ref: 'User'},
 	customer: {type: Schema.Types.ObjectId, ref: 'User'},
+	rental: {type: Schema.Types.ObjectId, ref: 'Rental'},
 	from: Date,
 	to: Date,
-	created: Date
+	created: Date,
+	comment: String
 });
 
 BookingSchema.path('owner').validate(function(owner) {

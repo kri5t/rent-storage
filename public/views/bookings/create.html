@@ -1,35 +1,44 @@
-<legend>
-    BOOKING
-</legend>
-<section>
-    <div class="row" data-ng-controller="BookingsController">
-        <div class="col-md-6">
-            <form role="form" data-ng-submit="create()">
-                <div  data-ng-controller="DatetimeController">
-                    <p class="input-group">
-                        <input type="text" class="form-control" datepicker-popup="{{format}}" data-ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                        <!--<input type="text" class="form-control" placeholder="in"/>-->
-                          <span class="input-group-btn">
-                            <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                          </span>
-                    </p>
+<div class="container-fluid">
+    <div class="row">
+        <legend>
+            BOOKING
+        </legend>
+        <section>
+            <div class="row" data-ng-controller="BookingsController">
+                <div class="col-md-6">
+                    <form role="form" data-ng-submit="create()">
+                        <div>
+                            <p class="input-group">
+                                <input id="toDate" type="text" class="form-control" datepicker-popup="{{format}}" show-weeks="true" data-ng-model="from" is-open="toDateOpened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                <!--<input type="text" class="form-control" placeholder="in"/>-->
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                  </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="input-group">
+                                <input id="fromDate" type="text" class="form-control" datepicker-popup="{{format}}" show-weeks="true" data-ng-model="to" is-open="fromDateOpened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                <!--<input type="text" class="form-control" placeholder="out"/>-->
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Comment" rows="3" data-ng-model="comment"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-default btn-primary">
+                                Send
+                            </button>
+                            <button class="btn btn-default" ng-click="go('/home')">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div  data-ng-controller="DatetimeController">
-                    <p class="input-group">
-                        <input type="text" class="form-control" datepicker-popup="{{format}}" data-ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                        <!--<input type="text" class="form-control" placeholder="out"/>-->
-                          <span class="input-group-btn">
-                            <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                          </span>
-                    </p>
-                </div>
-                <button class="btn btn-default btn-primary">
-                    Send
-                </button>
-                <button class="btn btn-default" ng-click="go('/home')">
-                    Cancel
-                </button>
-            </form>
-        </div>
+            </div>
+        </section>
     </div>
-</section>
+</div>
