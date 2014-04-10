@@ -1,10 +1,10 @@
-<div class="container-fluid">
+<div class="container-fluid" data-ng-controller="BookingsController">
     <div class="row">
         <legend>
-            BOOKING
+            <div><h3>BOOKING <small>fra {{owner}}</small></h3></div>
         </legend>
         <section>
-            <div class="row" data-ng-controller="BookingsController">
+            <div class="row">
                 <div class="col-md-6">
                     <form role="form" data-ng-submit="create()">
                         <div>

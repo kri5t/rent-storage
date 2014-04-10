@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
 	Booking = mongoose.model('Booking'),
+	User = mongoose.model('User'),
 	_ = require('lodash');
 
 /**
@@ -24,7 +25,16 @@ exports.booking = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
 	var booking = new Booking(req.body);
-	booking.user = req.user;
+	var owner = User.findOne({
+		_id: booking.owner
+	})
+	.exec(function(err, user) {
+		if (err) return next(err);
+		if (!user) return next(new Error('Failed to load User ' + id));
+		return user;
+	});
+
+	console.log(owner);
 
 	booking.save(function(err) {
 		if (err) {

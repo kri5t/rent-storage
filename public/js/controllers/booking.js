@@ -1,9 +1,12 @@
 'use strict';
 
 angular.module('mean.booking')
-.controller('BookingsController', ['$scope', '$location', '$state', 'Global', 'Bookings', function($scope, $location, $state, Global, Bookings){
+.controller('BookingsController', ['$scope', '$location', '$state', 'Rentals', 'Global', 'Bookings', function($scope, $location, $state, Rentals, Global, Bookings){
 	var $global = Global;
-	console.log();
+
+	var rental = Rentals.get({rentalId: $state.params.rentalId}, function(rental){
+		$scope.owner = rental.user.name;
+	});
 
 	$scope.go = function ( path ) {
 		$location.path( path );
@@ -15,7 +18,8 @@ angular.module('mean.booking')
 			comment: this.comment,
 			created: new Date(),
 			customer: $global.user._id,
-			rental: $state.params.rentalId
+			rental: $state.params.rentalId,
+			owner: rental.user._id
 		});
 		console.log(booking);
 		booking.$save(function(response) {
