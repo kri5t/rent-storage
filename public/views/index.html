@@ -1,5 +1,50 @@
 <section data-ng-controller="RentalSearchController">
-	<h1>This is the home view</h1>
-    <div>Søg efter placering!!</div>
-    <div><input ng-model="chosenPlace" googleplace/></div>
+    <h2>Find et sted at opbevare dine ting</h2>
+    <br>
+    <form class="form-inline" role="form" data-ng-submit="searchRental(chosenPlace, form.from_date, form.to_date, storageSize)">
+
+        <div class="form-group">
+            <p class="input-group">
+                <input ng-model="chosenPlace" type="text" class="form-control" placeholder="Hvorhenne?" required googleplace/>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="form.from_date" is-open="false" min="dt"
+                        ng-required="true" close-text="Close" id="fromDate" placeholder="Fra" required>
+              <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="form.to_date" is-open="false" min="dt"
+                       ng-required="true" close-text="Close" id="toDate" placeholder="Til" required>
+        <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <p class="input-group">
+                <select ng-model="storageSize" ng-init="storageSize=1" class="form-control" required>
+                    <option value="1">1 kvm</option>
+                    <option value="2">2 kvm</option>
+                    <option value="3">3 kvm</option>
+                    <option value="4">4 kvm</option>
+                    <option value="5">5 kvm</option>
+                </select>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <p class="input-group">
+                <button type="submit" class="btn btn-default">Søg</button>
+            </p>
+        </div>
+    </form>
 </section>
