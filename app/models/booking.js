@@ -17,4 +17,13 @@ BookingSchema.path('owner').validate(function(owner) {
 	return owner.length;
 }, 'Owner cannot be blank');
 
+/**
+ * Statics
+ */
+BookingSchema.statics.load = function(id, cb) {
+	this.findOne({
+		_id: id
+	}).exec(cb);
+};
+
 mongoose.model('Booking', BookingSchema);

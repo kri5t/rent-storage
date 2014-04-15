@@ -48,6 +48,10 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                 url: '/booking/create/:rentalId',
                 templateUrl: 'views/bookings/create.html'
             })
+			.state('view booking', {
+				url: '/booking/:bookingId',
+				templateUrl: 'views/bookings/view.html'
+			})
             .state('search result', {
                 url: '/rentals/searchresults/:place',
                 templateUrl: 'views/rentals/searchresults.html'
@@ -55,7 +59,8 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             .state('home', {
                 url: '/',
                 templateUrl: 'views/index.html'
-            });
+            })
+		;
     }
 ]);
 

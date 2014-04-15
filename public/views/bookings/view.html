@@ -1,0 +1,13 @@
+<section data-ng-controller="BookingsController" data-ng-init="findOne()">
+    <div data-ng-show="global.user._id == booking.owner">
+        <button class="btn btn-danger btn-xs" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i> delete
+        </button>
+    </div>
+    <div class="row"><p><span class="col-md-1">From: </span><span class="col-md-2">{{booking.from | date:'medium'}}</span></p></div>
+    <div class="row"><p><span class="col-md-1">To:</span><span class="col-md-2">{{booking.to | date:'medium'}}</span></p></div>
+
+    <label> Comment:
+    </label>
+    <div>{{booking.comment}}</div>
+</section>

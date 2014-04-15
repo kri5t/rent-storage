@@ -3,4 +3,21 @@
     <div>
         You have {{global.user.bookings.length}} bookings.
     </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="booking in global.user.bookings">
+                <td>{{booking.from | date:'medium'}}</td>
+                <td>{{booking.to | date:'medium'}}</td>
+                <td><a href="#!/booking/{{booking.bookingId}}">View</a></td>
+            </tr>
+        </tbody>
+    </ul>
+    </table>
 </section>

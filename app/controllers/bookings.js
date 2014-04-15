@@ -9,6 +9,12 @@ var mongoose = require('mongoose'),
 	Rental = mongoose.model('Rental'),
 	_ = require('lodash');
 
+function handleError(err){
+	console.log(err);
+	return 'fails';
+}
+
+
 /**
  * Find booking by id
  */
@@ -31,8 +37,7 @@ exports.create = function(req, res) {
 
 		user.bookings.push({from: booking.from, to: booking.to, bookingId: booking._id});
 		user.save(function (err) {
-			if (err) return handleError(err)
-			console.log("user saved");
+			if (err) return handleError(err);
 		});
 	});
 
@@ -43,7 +48,6 @@ exports.create = function(req, res) {
 
 		rental.save(function(err){
 			if(err) return handleError(err);
-			console.log("rental saved");
 		});
 	});
 
@@ -85,16 +89,43 @@ exports.update = function(req, res) {
 exports.destroy = function(req, res) {
 	var booking = req.booking;
 
-	booking.remove(function(err) {
-		if (err) {
-			return res.send('users/signup', {
-				errors: err.errors,
-				booking:booking
-			});
-		} else {
-			res.jsonp(booking);
-		}
+	Rental.findById(booking.rental, function(err, rental) {
+		if (err) return handleError(err);
+		rental.occupied.pull({bookingId: booking._id});
+		rental.save(function(err){
+			if(err) return handleError(err);
+		});
 	});
+	User.findById(booking.owner, function(err, user) {
+		if (err) return handleError(err);
+		console.log(user.bookings);
+		console.log('');
+		console.log(booking._id.toString());
+		console.log('');
+		console.log(user.bookings.pull({bookingID: booking._id.toString()}));
+		user.save(function(err){
+			if(err) return handleError(err);
+		});
+	});
+
+	User.update(
+		{_id: booking.owner},
+		{ $pull: {'user.booking': {bookingId: booking._id}}},
+		function(err, user){
+			console.log(user);
+		}
+	);
+
+//	booking.remove(function(err) {
+//		if (err) {
+//			return res.send('users/signup', {
+//				errors: err.errors,
+//				booking:booking
+//			});
+//		} else {
+//			res.jsonp(booking);
+//		}
+//	});
 };
 
 /**

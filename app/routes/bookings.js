@@ -6,7 +6,7 @@ var authorization = require('./middlewares/authorization');
 
 // Booking authorization helpers
 var hasAuthorization = function(req, res, next) {
-	if (req.booking.user.id !== req.user.id) {
+	if (!req.booking.owner.equals(req.user.id)) {
 		return res.send(401, 'User is not authorized');
 	}
 	next();
