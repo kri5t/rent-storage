@@ -38,7 +38,9 @@ var RentalSchema = new Schema({
         address: String,
         city: String,
         region: String,
-        country: String
+        country: String,
+        longitude: String,
+        latitude: String
     },
     description: {
         type: String,
