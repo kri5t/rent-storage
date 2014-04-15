@@ -23,6 +23,8 @@ module.exports = function(app) {
     app.put('/rentals/:rentalId', authorization.requiresLogin, hasAuthorization, rentals.update);
     app.del('/rentals/:rentalId', authorization.requiresLogin, hasAuthorization, rentals.destroy);
 
+    app.get('/rentals/search/:country/:city', rentals.rentalByCountryAndCity);
+
     // Finish with setting up the rentalId param
     app.param('rentalId', rentals.rental);
 

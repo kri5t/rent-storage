@@ -14,7 +14,7 @@
                 <div class="form-group col-md-3">
                     <p class="input-group">
                         <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="form.from_date" is-open="false" min="dt"
-                                ng-required="true" close-text="Close" id="fromDate" placeholder="Fra" required>
+                               ng-required="true" close-text="Close" id="fromDate" placeholder="Fra" required>
                       <span class="input-group-btn">
                         <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                       </span>
@@ -50,6 +50,28 @@
                     </div>
                 </div>
             </form>
+            <h1>Søgeresultater</h1>
+            {{place}}
+            <google-map
+                    center="map.center"
+                    zoom="map.zoom"
+                    mark-click="true"
+                    draggable="true">
+                <markers>
+                    <marker ng-repeat="marker in markers" coords="marker">
+                    </marker>
+                </markers>
+            </google-map>
+            <div>
+                <ul class="rentals unstyled">
+                    <li data-ng-repeat="rental in rentals">
+                        <span>{{rental.user.name}}</span>
+                        <h2><a data-ng-href="#!/rentals/{{rental._id}}">{{rental.title}}</a></h2>
+                        <div>{{rental.price}}</div>
+                        <div>{{rental.location.address}}</div>
+                    </li>
+                </ul>
+            </div>
         </section>
     </div>
 </div>

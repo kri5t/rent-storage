@@ -98,3 +98,21 @@ exports.all = function(req, res) {
         }
     });
 };
+
+/**
+ * Find rental by id
+ */
+exports.rentalByCountryAndCity = function(req, res) {
+    var country = req.params.country;
+    var city = req.params.city;
+    console.log('inside rental by country ' + city);
+    Rental.locateByLocation(country, city, function(err, rentals) {
+        if (err) {
+            res.render('error', {
+                status: 500
+            });
+        } else {
+            res.jsonp(rentals);
+        }
+    });
+};
