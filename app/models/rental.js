@@ -24,12 +24,14 @@ var RentalSchema = new Schema({
         type: String,
         required: true
     },
-    occupied: [
-        {fromDate: Date, toDate: Date, rent: {
-            type: Schema.ObjectId,
-            ref: 'Rent'
-        }}
-    ],
+    occupied: [{
+		fromDate: Date,
+		toDate: Date,
+		bookingId: {
+			type: Schema.ObjectId,
+			ref: 'Booking'
+		}
+	}],
     period: {
         fromDate: Date,
         toDate: Date

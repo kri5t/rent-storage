@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	Booking = mongoose.model('Booking'),
 	User = mongoose.model('User'),
+	Rental = mongoose.model('Rental'),
 	_ = require('lodash');
 
 /**
@@ -28,13 +29,23 @@ exports.create = function(req, res) {
 	User.findById(booking.owner, function(err, user){
 		if (err) return handleError(err);
 
-		user.bookings.push({from: booking.from, to: booking.to, bookingId: booking._id})
+		user.bookings.push({from: booking.from, to: booking.to, bookingId: booking._id});
 		user.save(function (err) {
 			if (err) return handleError(err)
+			console.log("user saved");
 		});
 	});
 
-	Rental
+	Rental.findById(booking.rental, function(err, rental){
+		if(err) return handleError(err);
+
+		rental.occupied.push({fromDate: booking.from, toDate: booking.to, bookingId: booking._id});
+
+		rental.save(function(err){
+			if(err) return handleError(err);
+			console.log("rental saved");
+		});
+	});
 
 	booking.save(function(err) {
 		if (err) {
