@@ -10,5 +10,11 @@ angular.module('mean.rentals').factory('Rentals', ['$resource', function($resour
         }
     });
 
-	return Rental;
+    // Get rentals by country and city
+    Rental.getRentalByCountryAndCity =  $resource('rentals/search/:country/:city', {
+        country: '@_country',
+        city: '@_city'
+    });
+
+    return Rental;
 }]);

@@ -4,6 +4,7 @@
             <span>{{rental.user.name}}</span>
             <h2><a data-ng-href="#!/rentals/{{rental._id}}">{{rental.title}}</a></h2>
             <div>{{rental.price}}</div>
+            <div>{{rental.location.address}}</div>
         </li>
     </ul>
     <h1 data-ng-hide="!rentals || rentals.length">No rentals yet. <br> Why don't you <a href="/#!/rentals/create">Create One</a>?</h1>

@@ -25,13 +25,13 @@ var RentalSchema = new Schema({
         required: true
     },
     occupied: [{
-		fromDate: Date,
-		toDate: Date,
-		bookingId: {
-			type: Schema.ObjectId,
-			ref: 'Booking'
-		}
-	}],
+        fromDate: Date,
+        toDate: Date,
+        bookingId: {
+            type: Schema.ObjectId,
+            ref: 'Booking'
+        }
+    }],
     period: {
         fromDate: Date,
         toDate: Date
@@ -70,6 +70,12 @@ RentalSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
     }).populate('user', 'name username').exec(cb);
+};
+
+RentalSchema.statics.locateByLocation = function(country, city, cb) {
+    this.where('location.city').equals(city)
+        .where('location.country').equals(country)
+        .populate('user', 'name username').exec(cb);
 };
 
 mongoose.model('Rental', RentalSchema);
