@@ -25,16 +25,16 @@ exports.booking = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
 	var booking = new Booking(req.body);
-	var owner = User.findOne({
-		_id: booking.owner
-	})
-	.exec(function(err, user) {
-		if (err) return next(err);
-		if (!user) return next(new Error('Failed to load User ' + id));
-		return user;
+	User.findById(booking.owner, function(err, user){
+		if (err) return handleError(err);
+
+		user.bookings.push({from: booking.from, to: booking.to, bookingId: booking._id})
+		user.save(function (err) {
+			if (err) return handleError(err)
+		});
 	});
 
-	console.log(owner);
+	Rental
 
 	booking.save(function(err) {
 		if (err) {
