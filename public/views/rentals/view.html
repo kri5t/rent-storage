@@ -1,14 +1,17 @@
 <section data-ng-controller="RentalsController" data-ng-init="findOne()">
-    <span>Bruger: {{rental.user.name}}</span>
-    <h2>Titel: {{rental.title}}</h2>
-    <h2> Pris: {{rental.price}}</h2>
-    <div data-ng-show="global.user._id == rental.user._id">
-        <a class="btn" href="/#!/rentals/{{rental._id}}/edit">
-            <i class="glyphicon glyphicon-edit"></i>
-        </a>
-        <a class="btn" data-ng-click="remove();">
-            <i class="glyphicon glyphicon-trash"></i>
-        </a>
+
+    <h2 class="uppercase">{{rental.title}} <small class="lowercase">by {{rental.user.name}}</small></h2>
+    <h4></h4>
+    <h4><i class="glyphicon glyphicon-usd"></i> {{rental.price}}</h4>
+    <div>
+        <span data-ng-show="global.user._id == rental.user._id">
+            <a class="btn" href="/#!/rentals/{{rental._id}}/edit">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn" data-ng-click="remove();">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </span>
+        <a href="/#!/booking/create/{{rental._id}}" ng-show="true">BOOK IT</a>
     </div>
-    <a href="/#!/booking/create/{{rental._id}}" ng-show="true">BOOK IT</a>
 </section>
