@@ -20,4 +20,25 @@
         </tbody>
     </ul>
     </table>
+
+    <div>
+        Places you have booked: {{global.user.bookedPlaces.length}}
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>View</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="booking in global.user.bookedPlaces">
+            <td>{{booking.from | date:'medium'}}</td>
+            <td>{{booking.to | date:'medium'}}</td>
+            <td><a href="#!/booking/{{booking.bookingId}}">View</a></td>
+        </tr>
+        </tbody>
+        </ul>
+    </table>
 </section>

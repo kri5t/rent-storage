@@ -35,7 +35,16 @@ exports.create = function(req, res) {
 	User.findById(booking.owner, function(err, user){
 		if (err) return handleError(err);
 
-		user.bookings.push({from: booking.from, to: booking.to, bookingId: booking._id});
+		user.bookings.push({from: booking.from, to: booking.to, rentalId: booking.rental, bookingId: booking._id});
+		user.save(function (err) {
+			if (err) return handleError(err);
+		});
+	});
+
+	User.findById(booking.customer, function(err, user){
+		if (err) return handleError(err);
+
+		user.bookedPlaces.push({from: booking.from, to: booking.to, rentalId: booking.rental, bookingId: booking._id});
 		user.save(function (err) {
 			if (err) return handleError(err);
 		});

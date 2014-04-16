@@ -20,7 +20,8 @@ var UserSchema = new Schema({
         type: String,
         unique: true
     },
-	bookings: [{from: Date, to: Date, bookingId: {type: Schema.Types.ObjectId, ref: 'Booking'}}],
+	bookings: [{from: Date, to: Date, rentalId: {type: Schema.Types.ObjectId, ref: 'Rental'}, bookingId: {type: Schema.Types.ObjectId, ref: 'Booking'}}],
+	bookedPlaces: [{from: Date, to: Date, rentalId: {type: Schema.Types.ObjectId, ref: 'Rental'}, bookingId: {type: Schema.Types.ObjectId, ref: 'Booking'}}],
     hashed_password: String,
     provider: String,
     salt: String,
