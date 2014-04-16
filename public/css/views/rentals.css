@@ -1,0 +1,13 @@
+.topborder{
+    border-top: 1px solid #eaeaea;
+    margin: 0 0 10px 0;
+}
+.topborder:first-child{
+    border-top-width:0px;
+}
+.leftspace{
+    margin-left: 3px;
+}
+.uppercase{
+    text-transform: uppercase;
+}

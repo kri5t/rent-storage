@@ -1,11 +1,16 @@
+
 <section data-ng-controller="RentalsController" data-ng-init="find()">
-    <ul class="rentals unstyled">
-        <li data-ng-repeat="rental in rentals">
-            <span>{{rental.user.name}}</span>
-            <h2><a data-ng-href="#!/rentals/{{rental._id}}">{{rental.title}}</a></h2>
-            <div>{{rental.price}}</div>
-            <div>{{rental.location.address}}</div>
-        </li>
-    </ul>
-    <h1 data-ng-hide="!rentals || rentals.length">No rentals yet. <br> Why don't you <a href="/#!/rentals/create">Create One</a>?</h1>
+    <div class="container-fluid">
+        <div class="topborder row" data-ng-repeat="rental in rentals">
+            <div>
+                <h3 class="uppercase"><a data-ng-href="#!/rentals/{{rental._id}}">{{rental.title || 'No location'}}</a></h3>
+                <h4><small clas="leftspace">by {{rental.user.name}}</small></h4>
+                <ul class="list-inline">
+                    <li class="col-md-1"><span class="glyphicon glyphicon-usd"></span><span class="leftspace">{{rental.price}}</span></li>
+                    <li class="col-md-1"><span class="glyphicon glyphicon-home"></span><span class="leftspace">{{rental.location.city}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row" data-ng-hide="!rentals || rentals.length"><h1>No rentals yet. <br> Why don't you <a href="/#!/rentals/create">Create One</a>?</h1></div>
+    </div>
 </section>
