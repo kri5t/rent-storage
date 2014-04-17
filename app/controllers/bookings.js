@@ -98,43 +98,32 @@ exports.update = function(req, res) {
 exports.destroy = function(req, res) {
 	var booking = req.booking;
 
-	Rental.findById(booking.rental, function(err, rental) {
-		if (err) return handleError(err);
-		rental.occupied.pull({bookingId: booking._id});
-		rental.save(function(err){
-			if(err) return handleError(err);
-		});
-	});
-	User.findById(booking.owner, function(err, user) {
-		if (err) return handleError(err);
-		console.log(user.bookings);
-		console.log('');
-		console.log(booking._id.toString());
-		console.log('');
-		console.log(user.bookings.pull({bookingID: booking._id.toString()}));
-		user.save(function(err){
-			if(err) return handleError(err);
-		});
-	});
-
-	User.update(
-		{_id: booking.owner},
-		{ $pull: {'user.booking': {bookingId: booking._id}}},
-		function(err, user){
-			console.log(user);
-		}
+	User.findByIdAndUpdate(
+		booking.owner,
+		{ $pull: {'bookings': {bookingId: booking._id}}},
+		function(err){ console.log(err);}
+	);
+	User.findByIdAndUpdate(
+		booking.customer,
+		{ $pull: {'bookedPlaces': {bookingId: booking._id}}},
+		function(err){ console.log(err);}
+	);
+	Rental.findByIdAndUpdate(
+		booking.rental,
+		{ $pull: {'occupied': {bookingId: booking._id}}},
+		function(err){ console.log(err);}
 	);
 
-//	booking.remove(function(err) {
-//		if (err) {
-//			return res.send('users/signup', {
-//				errors: err.errors,
-//				booking:booking
-//			});
-//		} else {
-//			res.jsonp(booking);
-//		}
-//	});
+	booking.remove(function(err) {
+		if (err) {
+			return res.send('users/signup', {
+				errors: err.errors,
+				booking:booking
+			});
+		} else {
+			res.jsonp(booking);
+		}
+	});
 };
 
 /**
